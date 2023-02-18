@@ -3,6 +3,7 @@ import { ROUTE } from '@/constants/route';
 import { Home, Issues, Search } from '@/pages';
 import { globalStyle } from '@/styles/globalStyle';
 import { Global } from '@emotion/react';
+import { Layout } from '@/components/common';
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,9 @@ const App = () => {
   return (
     <>
       <Global styles={globalStyle} />
-      <RouterProvider router={router} />
+      <Layout>
+        <RouterProvider router={router} />
+      </Layout>
     </>
   );
 };
