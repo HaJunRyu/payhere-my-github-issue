@@ -1,6 +1,8 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { ROUTE } from './constants/route';
+import { ROUTE } from '@/constants/route';
 import { Home, Issues, Search } from '@/pages';
+import { globalStyle } from '@/styles/globalStyle';
+import { Global } from '@emotion/react';
 
 const router = createBrowserRouter([
   {
@@ -18,7 +20,12 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <Global styles={globalStyle} />
+      <RouterProvider router={router} />
+    </>
+  );
 };
 
 export default App;
