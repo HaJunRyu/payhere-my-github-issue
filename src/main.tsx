@@ -1,9 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { ROUTE } from '@/constants/route';
+import { Home, Issues, Search } from '@/pages';
+import App from '@/App';
+
+const router = createBrowserRouter([
+  {
+    element: <App />,
+    children: [
+      {
+        path: ROUTE.HOME,
+        element: <Home />,
+      },
+      {
+        path: `${ROUTE.ISSUES}/:owner/:repo`,
+        element: <Issues />,
+      },
+      {
+        path: ROUTE.SEARCH,
+        element: <Search />,
+      },
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );

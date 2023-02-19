@@ -1,32 +1,16 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { ROUTE } from '@/constants/route';
-import { Home, Issues, Search } from '@/pages';
+import { Outlet } from 'react-router-dom';
 import { globalStyle } from '@/styles/globalStyle';
 import { Global } from '@emotion/react';
-import { Layout } from '@/components/common';
-
-const router = createBrowserRouter([
-  {
-    path: ROUTE.HOME,
-    element: <Home />,
-  },
-  {
-    path: `${ROUTE.ISSUES}/:owner/:repo`,
-    element: <Issues />,
-  },
-  {
-    path: ROUTE.SEARCH,
-    element: <Search />,
-  },
-]);
+import { Layout, Navigation } from '@/components/common';
 
 const App = () => {
   return (
     <>
       <Global styles={globalStyle} />
       <Layout>
-        <RouterProvider router={router} />
+        <Outlet />
       </Layout>
+      <Navigation />
     </>
   );
 };
