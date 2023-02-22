@@ -1,9 +1,10 @@
-import { SearchSection } from '@/components/search';
+import { RepositoriesSection, SearchSection } from '@/components/search';
 
 const Search = () => {
   return (
     <main>
       <SearchSection />
+      <RepositoriesSection />
     </main>
   );
 };
