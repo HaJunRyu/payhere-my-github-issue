@@ -1,5 +1,11 @@
+import { SearchSection } from '@/components/search';
+
 const Search = () => {
-  return <div>Search</div>;
+  return (
+    <main>
+      <SearchSection />
+    </main>
+  );
 };
 
 export default Search;
