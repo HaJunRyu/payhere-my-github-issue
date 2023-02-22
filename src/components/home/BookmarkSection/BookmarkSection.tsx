@@ -20,9 +20,10 @@ const dummyRepos = [
 
 const BookmarkSection = () => {
   return (
-    <Styled.BookmarkSection>
+    <section>
+      <Styled.Heading>Pinned Repositories</Styled.Heading>
       <Repositories repositories={dummyRepos} />
-    </Styled.BookmarkSection>
+    </section>
   );
 };
 

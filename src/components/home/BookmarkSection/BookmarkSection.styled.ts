@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
 
-export const BookmarkSection = styled.section`
-  margin-top: 1.6rem;
+export const Heading = styled.h2`
+  margin-bottom: 1.6rem;
 `;
