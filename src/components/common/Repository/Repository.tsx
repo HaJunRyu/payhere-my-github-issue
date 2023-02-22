@@ -5,7 +5,7 @@ export interface RepositoryType {
   fullName: string;
   description: string;
   language: string;
-  isBookmarked: boolean;
+  isBookmarked?: boolean;
   stargazersCount: number;
 }
 
