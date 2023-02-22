@@ -166,4 +166,7 @@ export const resetCss = css`
   path {
     pointer-events: none;
   }
+  input:focus {
+    outline: 0;
+  }
 `;
