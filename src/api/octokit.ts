@@ -1,4 +1,4 @@
-import { Octokit, App } from 'octokit';
+import { Octokit } from 'https://cdn.skypack.dev/octokit';
 
 const { GITHUB_TOKEN } = import.meta.env;
 
