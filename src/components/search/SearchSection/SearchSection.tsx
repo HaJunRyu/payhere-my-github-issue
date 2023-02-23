@@ -1,25 +1,40 @@
 import { searchService } from '@/api/service';
-import { RepositoryType } from '@/components/common/Repository/Repository';
 import useDebounce from '@/hooks/useDebounce';
+import { SearchedRepositories } from '@/pages/Search';
 import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
 import * as Styled from './SearchSection.styled';
 
+export const PER_PAGE = 20;
+
 interface SearchSectionProps {
-  setSearchedRepositories: Dispatch<SetStateAction<RepositoryType[]>>;
+  searchKeyword: string;
+  setSearchKeyword: Dispatch<SetStateAction<string>>;
+  setSearchedRepositories: Dispatch<SetStateAction<SearchedRepositories>>;
+  setCurrentPage: Dispatch<SetStateAction<number>>;
 }
 
-const SearchSection = ({ setSearchedRepositories }: SearchSectionProps) => {
-  const [searchKeyword, setSearchKeyword] = useState('');
-
+const SearchSection = ({
+  searchKeyword,
+  setSearchKeyword,
+  setSearchedRepositories,
+  setCurrentPage,
+}: SearchSectionProps) => {
   const handleChangeSearchKeyword = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setSearchKeyword(target.value);
   };
 
   const handleFetchRepositories = useDebounce(async () => {
-    const response = await searchService.getRepositories({ q: searchKeyword, page: 1 });
+    const response = await searchService.getRepositories({
+      q: searchKeyword,
+      page: 1,
+      perPage: PER_PAGE,
+    });
 
-    setSearchedRepositories(response.data.items);
-  }, 200);
+    const { items, total_count } = response.data;
+    setSearchedRepositories({ repositories: items, totalCount: total_count });
+
+    setCurrentPage(1);
+  }, 500);
 
   return (
     <section>

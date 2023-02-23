@@ -2,13 +2,35 @@ import { RepositoryType } from '@/components/common/Repository/Repository';
 import { RepositoriesSection, SearchSection } from '@/components/search';
 import { useState } from 'react';
 
+export interface SearchedRepositories {
+  repositories: RepositoryType[];
+  totalCount: number;
+}
+
 const Search = () => {
-  const [searchedRepositories, setSearchedRepositories] = useState<RepositoryType[]>([]);
+  const [searchKeyword, setSearchKeyword] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const [searchedRepositories, setSearchedRepositories] = useState<SearchedRepositories>({
+    repositories: [],
+    totalCount: 0,
+  });
 
   return (
     <main>
-      <SearchSection setSearchedRepositories={setSearchedRepositories} />
-      <RepositoriesSection repositories={searchedRepositories} />
+      <SearchSection
+        searchKeyword={searchKeyword}
+        setSearchKeyword={setSearchKeyword}
+        setSearchedRepositories={setSearchedRepositories}
+        setCurrentPage={setCurrentPage}
+      />
+      <RepositoriesSection
+        searchKeyword={searchKeyword}
+        searchedRepositories={searchedRepositories}
+        setSearchedRepositories={setSearchedRepositories}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </main>
   );
 };
