@@ -10,7 +10,7 @@ const Repositories = ({ repositories }: RepositoriesProps) => {
   return (
     <Styled.Repositories>
       {repositories.map(repositoryProps => {
-        return <Repository {...repositoryProps} />;
+        return <Repository key={repositoryProps.full_name} {...repositoryProps} />;
       })}
     </Styled.Repositories>
   );
