@@ -1,30 +1,16 @@
 import { Repositories, ScreenReaderOnly } from '@/components/common';
+import { RepositoryType } from '@/components/common/Repository/Repository';
 import * as Styled from './RepositoriesSection.styled';
 
-interface RepositoriesSectionProps {}
+interface RepositoriesSectionProps {
+  repositories: RepositoryType[];
+}
 
-const dummyRepos = [
-  {
-    fullName: 'dtrupenn/Tetris',
-    description: 'A C implementation of Tetris using Pennsim through LC4',
-    language: 'Typescript',
-    isBookmarked: true,
-    stargazersCount: 1,
-  },
-  {
-    fullName: 'dtrupenn/Tetris',
-    description: 'A C implementation of Tetris using Pennsim through LC4',
-    language: 'Typescript',
-    isBookmarked: false,
-    stargazersCount: 1,
-  },
-];
-
-const RepositoriesSection = ({}: RepositoriesSectionProps) => {
+const RepositoriesSection = ({ repositories }: RepositoriesSectionProps) => {
   return (
     <Styled.RepositoriesSection>
       <ScreenReaderOnly as="h2">Repositories</ScreenReaderOnly>
-      <Repositories repositories={dummyRepos} />
+      <Repositories repositories={repositories} />
     </Styled.RepositoriesSection>
   );
 };
