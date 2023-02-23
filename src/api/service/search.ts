@@ -1,20 +1,16 @@
 import octokit from '@/api/octokit';
-
-interface GetRepositoriesRequest {
-  q: string;
-  page: number;
-  perPage?: number;
-}
+import { GetRepositoriesRequest, GetRepositoriesResponse } from '@/types/dto/service';
 
 const searchService = {
-  async getRepositories({ q, page, perPage = 20 }: GetRepositoriesRequest) {
+  async getRepositories({
+    q,
+    page,
+    perPage = 20,
+  }: GetRepositoriesRequest): Promise<GetRepositoriesResponse> {
     return await octokit.request('GET /search/repositories', {
       q,
       page,
       per_page: perPage,
-      headers: {
-        'X-GitHub-Api-Version': '2022-11-28',
-      },
     });
   },
 } as const;
