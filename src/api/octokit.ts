@@ -1,9 +1,9 @@
 import { Octokit } from 'https://cdn.skypack.dev/octokit';
 
-const { GITHUB_TOKEN } = import.meta.env;
+const { VITE_GITHUB_TOKEN } = import.meta.env;
 
 const octokit = new Octokit({
-  auth: GITHUB_TOKEN,
+  auth: VITE_GITHUB_TOKEN,
 });
 
 export default octokit;
