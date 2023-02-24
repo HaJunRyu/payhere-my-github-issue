@@ -7,8 +7,8 @@ interface BookMarkActions {
   deleteRepository: (repositoryFullName: string) => void;
 }
 
-const BookmarkValueContext = createContext<RepositoryType[] | null>(null);
-const BookmarkActionsContext = createContext<BookMarkActions | null>(null);
+export const BookmarkValueContext = createContext<RepositoryType[] | null>(null);
+export const BookmarkActionsContext = createContext<BookMarkActions | null>(null);
 
 const BookmarkProvider = ({ children }: PropsWithChildren) => {
   const bookmarkInLocalStorage = JSON.parse(localStorage.getItem(LOCAL_STORAGE.BOOKMARK) ?? '[]');
