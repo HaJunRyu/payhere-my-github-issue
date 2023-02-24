@@ -20,12 +20,6 @@ export const IssueTitle = styled.h3`
 `;
 
 export const RepoName = styled.p`
-  margin: 0.4rem 0;
-  font-size: 1.2rem;
-`;
-
-export const Description = styled.p`
-  margin: 1.2rem 0 0;
-  font-weight: 500;
+  margin: 0.8rem 0 0;
   font-size: 1.4rem;
 `;
