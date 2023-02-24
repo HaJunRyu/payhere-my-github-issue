@@ -1,6 +1,7 @@
 import issuesService from '@/api/service/issues';
-import { IssuesSection } from '@/components/issues';
+import { IssuesSection, PaginationSection } from '@/components/issues';
 import { IssueType } from '@/components/issues/Issue/Issue';
+import { PER_PAGE_OF_REPO } from '@/components/issues/PaginationSection/PaginationSection';
 import useBookmarkValue from '@/hooks/useBookmarkValue';
 import { useEffect, useState } from 'react';
 
@@ -8,7 +9,10 @@ const Issues = () => {
   const [bookmarkRepoIssues, setBookmarkRepoIssues] = useState<IssueType[]>([]);
   const bookmark = useBookmarkValue();
 
-  console.log(bookmarkRepoIssues);
+  const openIssueCount = bookmark.reduce(
+    (totalOpenIssueCount, { open_issues_count }) => totalOpenIssueCount + open_issues_count,
+    0
+  );
 
   useEffect(() => {
     const fetchIssues = async () => {
@@ -17,6 +21,7 @@ const Issues = () => {
           owner: owner.login,
           repo: name,
           page: 1,
+          perPage: PER_PAGE_OF_REPO,
         });
 
         const issuesWithRepoName = data.map(issue => ({ ...issue, repoName: full_name }));
@@ -43,6 +48,11 @@ const Issues = () => {
   return (
     <main>
       <IssuesSection issues={bookmarkRepoIssues} />
+      <PaginationSection
+        issues={bookmarkRepoIssues}
+        openIssueCount={openIssueCount}
+        setBookmarkRepoIssues={setBookmarkRepoIssues}
+      />
     </main>
   );
 };
