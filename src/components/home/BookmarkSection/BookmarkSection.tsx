@@ -1,28 +1,22 @@
 import { Repositories } from '@/components/common';
+import { ROUTE } from '@/constants/route';
+import useBookmarkValue from '@/hooks/useBookmarkValue';
+import { Link } from 'react-router-dom';
 import * as Styled from './BookmarkSection.styled';
 
-const dummyRepos = [
-  {
-    fullName: 'dtrupenn/Tetris',
-    description: 'A C implementation of Tetris using Pennsim through LC4',
-    language: 'Typescript',
-    isBookmarked: true,
-    stargazersCount: 1,
-  },
-  {
-    fullName: 'dtrupenn/Tetris',
-    description: 'A C implementation of Tetris using Pennsim through LC4',
-    language: 'Typescript',
-    isBookmarked: false,
-    stargazersCount: 1,
-  },
-];
-
 const BookmarkSection = () => {
+  const bookmark = useBookmarkValue();
   return (
     <section>
       <Styled.Heading>Bookmarked Repositories</Styled.Heading>
-      <Repositories repositories={dummyRepos} />
+      {bookmark.length > 0 ? (
+        <Repositories repositories={bookmark} />
+      ) : (
+        <Styled.BookIsEmptyContainer>
+          <Styled.EmptyMessage>북마크 된 저장소가 없습니다</Styled.EmptyMessage>
+          <Styled.GoToSearchPage to={ROUTE.SEARCH}>Repository 검색 🔍</Styled.GoToSearchPage>
+        </Styled.BookIsEmptyContainer>
+      )}
     </section>
   );
 };
