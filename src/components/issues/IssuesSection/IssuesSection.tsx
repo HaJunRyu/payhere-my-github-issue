@@ -1,27 +1,15 @@
 import { Issue } from '@/components/issues';
+import { IssueType } from '../Issue/Issue';
 import * as Styled from './IssuesSection.styled';
 
-interface IssuesSectionProps {}
+interface IssuesSectionProps {
+  issues: IssueType[];
+}
 
-const dummyIssues = [
-  {
-    html_url: 'https://github.com/mash-up-kr/mash-up-recruit-fe/issues/51',
-    title: 'react good',
-    body: 'blablablablablablablablablablablablablablablablablablablabla',
-    repoName: 'facebook/react',
-  },
-  {
-    html_url: 'https://github.com/mash-up-kr/mash-up-recruit-fe/issues/211',
-    title: 'react gooood',
-    body: 'blablablablablablablablablablablablablablablablablablablablablablablablablablablabla',
-    repoName: 'facebook/react-native',
-  },
-];
-
-const IssuesSection = ({}: IssuesSectionProps) => {
+const IssuesSection = ({ issues }: IssuesSectionProps) => {
   return (
     <Styled.Issues>
-      {dummyIssues.map(issue => (
+      {issues.map(issue => (
         <Issue issue={issue} key={issue.html_url} />
       ))}
     </Styled.Issues>
