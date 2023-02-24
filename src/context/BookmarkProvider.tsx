@@ -18,10 +18,20 @@ const BookmarkProvider = ({ children }: PropsWithChildren) => {
     () => ({
       addRepository(repository) {
         setBookmarkValue(prevBookmark => [...prevBookmark, repository]);
+
+        localStorage.setItem(
+          LOCAL_STORAGE.BOOKMARK,
+          JSON.stringify([...bookmarkValue, repository])
+        );
       },
       deleteRepository(repositoryFullName) {
         setBookmarkValue(prevBookmark =>
           prevBookmark.filter(({ full_name }) => repositoryFullName !== full_name)
+        );
+
+        localStorage.setItem(
+          LOCAL_STORAGE.BOOKMARK,
+          JSON.stringify(bookmarkValue.filter(({ full_name }) => repositoryFullName !== full_name))
         );
       },
     }),
