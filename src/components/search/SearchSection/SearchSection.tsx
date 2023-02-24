@@ -24,6 +24,8 @@ const SearchSection = ({
   };
 
   const handleFetchRepositories = useDebounce(async () => {
+    if (searchKeyword.trim() === '') return;
+
     const response = await searchService.getRepositories({
       q: searchKeyword,
       page: 1,
