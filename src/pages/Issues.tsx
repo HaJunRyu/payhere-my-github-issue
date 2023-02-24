@@ -1,4 +1,5 @@
 import issuesService from '@/api/service/issues';
+import { IssuesSection } from '@/components/issues';
 import useBookmarkValue from '@/hooks/useBookmarkValue';
 import { IssueItem } from '@/types/dto/issues';
 import { useEffect, useState } from 'react';
@@ -33,7 +34,11 @@ const Issues = () => {
 
     fetchIssues();
   }, []);
-  return <div>Issues</div>;
+  return (
+    <main>
+      <IssuesSection />
+    </main>
+  );
 };
 
 export default Issues;
