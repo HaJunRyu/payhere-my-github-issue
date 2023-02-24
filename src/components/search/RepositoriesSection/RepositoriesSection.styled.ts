@@ -41,4 +41,12 @@ export const PageChangeButton = styled.button<{ isCurrentPage: boolean }>`
 
 export const PageRangeChangeButton = styled.button`
   background: transparent;
+
+  &:first-of-type {
+    padding-right: 1rem;
+  }
+
+  &:last-of-type {
+    padding-left: 1rem;
+  }
 `;
