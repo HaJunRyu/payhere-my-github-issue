@@ -116,5 +116,4 @@ export interface GetRepositoriesRequest {
   page: number;
   perPage?: number;
 }
-
 export interface GetRepositoriesResponse extends BaseResponse<RepositoriesData> {}

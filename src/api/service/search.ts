@@ -1,5 +1,5 @@
 import octokit from '@/api/octokit';
-import { GetRepositoriesRequest, GetRepositoriesResponse } from '@/types/dto/service';
+import { GetRepositoriesRequest, GetRepositoriesResponse } from '@/types/dto/search';
 
 const searchService = {
   async getRepositories({
