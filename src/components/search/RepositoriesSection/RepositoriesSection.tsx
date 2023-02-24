@@ -54,9 +54,9 @@ const RepositoriesSection = ({
   };
 
   const handleChangePrevPageRange = () => {
-    const firstPageOfNextPageRange = Math.floor(currentPage / 10) * 10 - 9;
-    setCurrentPage(firstPageOfNextPageRange);
-    handleFetchRepositories(firstPageOfNextPageRange);
+    const firstPageOfPrevPageRange = Math.floor(currentPage / 10) * 10 - 9;
+    setCurrentPage(firstPageOfPrevPageRange);
+    handleFetchRepositories(firstPageOfPrevPageRange);
   };
 
   return (
