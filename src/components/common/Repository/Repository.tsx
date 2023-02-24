@@ -3,6 +3,7 @@ import { ReactComponent as StarIcon } from '@/assets/svg/star.svg';
 import { RepositoryItem } from '@/types/dto/service';
 import useBookmarkActions from '@/hooks/useBookmarkActions';
 import useBookmarkValue from '@/hooks/useBookmarkValue';
+import { LOCAL_STORAGE } from '@/constants/localStorage';
 
 export interface RepositoryType extends RepositoryItem {}
 
@@ -22,10 +23,17 @@ const Repository = ({ repository }: RepositoryProps) => {
     }
 
     bookmarkActions.addRepository(repository);
+
+    localStorage.setItem(LOCAL_STORAGE.BOOKMARK, JSON.stringify([...bookmark, repository]));
   };
 
   const handleDeleteRepoInBookmark = () => {
     bookmarkActions.deleteRepository(full_name);
+
+    localStorage.setItem(
+      LOCAL_STORAGE.BOOKMARK,
+      JSON.stringify(bookmark.filter(repository => repository.full_name !== full_name))
+    );
   };
 
   const isBookmarked = bookmark.some(bookmark => bookmark.full_name === full_name);
