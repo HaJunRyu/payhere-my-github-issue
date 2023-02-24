@@ -1,8 +1,8 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-export const RepositoriesSection = styled.section`
-  margin: 2.4rem 0 0;
+export const PaginationSection = styled.section`
+  margin: 2.4rem 0;
 `;
 
 export const Pagination = styled.div`
@@ -14,7 +14,6 @@ export const PageList = styled.ol`
   display: flex;
   justify-content: flex-start;
   flex-grow: 1;
-  margin: 2.4rem 0;
 `;
 
 export const PageNumber = styled.li`

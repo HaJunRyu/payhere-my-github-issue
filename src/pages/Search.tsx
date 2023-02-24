@@ -1,5 +1,5 @@
 import { RepositoryType } from '@/components/common/Repository/Repository';
-import { RepositoriesSection, SearchSection } from '@/components/search';
+import { PaginationSection, RepositoriesSection, SearchSection } from '@/components/search';
 import { useState } from 'react';
 
 export interface SearchedRepositories {
@@ -24,12 +24,13 @@ const Search = () => {
         setSearchedRepositories={setSearchedRepositories}
         setCurrentPage={setCurrentPage}
       />
-      <RepositoriesSection
-        searchKeyword={searchKeyword}
+      <RepositoriesSection searchedRepositories={searchedRepositories} />
+      <PaginationSection
         searchedRepositories={searchedRepositories}
-        setSearchedRepositories={setSearchedRepositories}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
+        searchKeyword={searchKeyword}
+        setSearchedRepositories={setSearchedRepositories}
       />
     </main>
   );
