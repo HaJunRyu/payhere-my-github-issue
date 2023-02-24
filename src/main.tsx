@@ -14,7 +14,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: `${ROUTE.ISSUES}/:owner/:repo`,
+        path: ROUTE.ISSUES,
         element: <Issues />,
       },
       {
