@@ -9,8 +9,8 @@ interface RepositoriesProps {
 const Repositories = ({ repositories }: RepositoriesProps) => {
   return (
     <Styled.Repositories>
-      {repositories.map(repositoryProps => {
-        return <Repository key={repositoryProps.full_name} {...repositoryProps} />;
+      {repositories.map(repository => {
+        return <Repository key={repository.full_name} repository={repository} />;
       })}
     </Styled.Repositories>
   );

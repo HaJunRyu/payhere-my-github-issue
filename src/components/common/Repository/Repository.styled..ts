@@ -41,11 +41,22 @@ export const StarCount = styled.span`
 
 export const BookMarkWrapper = styled.div`
   position: absolute;
-  top: 1.2rem;
-  right: 1.2rem;
+  top: 0.8rem;
+  right: 0.8rem;
   display: flex;
   align-items: center;
   gap: 0.4rem;
+`;
+
+export const AddAndDeleteBookmarkButton = styled.button`
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border-radius: 0.4rem;
+
+  &:hover {
+    background: #eaeaea;
+  }
 `;
 
 export const BookMark = styled.span`
