@@ -11,7 +11,12 @@ export const Repository = styled.li`
 `;
 
 export const RepoName = styled.h3`
+  display: inline-block;
   font-size: 1.4rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const Description = styled.p`

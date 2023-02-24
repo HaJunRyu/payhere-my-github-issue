@@ -1,6 +1,6 @@
 import * as Styled from './Repository.styled.';
 import { ReactComponent as StarIcon } from '@/assets/svg/star.svg';
-import { RepositoryItem } from '@/types/dto/service';
+import { RepositoryItem } from '@/types/dto/search';
 import useBookmarkActions from '@/hooks/useBookmarkActions';
 import useBookmarkValue from '@/hooks/useBookmarkValue';
 import { LOCAL_STORAGE } from '@/constants/localStorage';
@@ -12,7 +12,7 @@ interface RepositoryProps {
 }
 
 const Repository = ({ repository }: RepositoryProps) => {
-  const { full_name, description, language, stargazers_count } = repository;
+  const { full_name, description, language, stargazers_count, url, html_url } = repository;
   const bookmark = useBookmarkValue();
   const bookmarkActions = useBookmarkActions();
 
@@ -40,7 +40,9 @@ const Repository = ({ repository }: RepositoryProps) => {
 
   return (
     <Styled.Repository>
-      <Styled.RepoName>{full_name}</Styled.RepoName>
+      <a href={html_url} target="_blank" rel="noreferrer">
+        <Styled.RepoName>{full_name}</Styled.RepoName>
+      </a>
       <Styled.Description>{description}</Styled.Description>
       <Styled.AdditionalInfo>
         <Styled.Language>{language}</Styled.Language>
